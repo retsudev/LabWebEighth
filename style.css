@@ -343,6 +343,7 @@ main.container {
   min-height: 1.4em;
   margin: 8px 0 0;
   font-size: 14px;
+  overflow-wrap: anywhere;
 }
 
 .contact-status[data-state="success"] {
@@ -360,6 +361,20 @@ main.container {
 
 .contact-actions #contact-submit {
   flex: 0 0 auto;
+  min-height: 44px;
+  padding: 7px 16px;
+  color: var(--accent-contrast);
+  background: var(--accent);
+  border-color: var(--accent);
+  border-radius: 8px;
+  font-weight: 700;
+  transition: background-color 0.16s ease, border-color 0.16s ease, transform 0.16s ease;
+}
+
+.contact-actions #contact-submit:hover:not(:disabled) {
+  background: var(--accent-light);
+  border-color: var(--accent-light);
+  transform: translateY(-1px);
 }
 
 #contact-dialog button {
@@ -1432,7 +1447,7 @@ form .form-check-input:focus {
   color: var(--error);
 }
 
-#questionnaire-form input[type="submit"]:disabled {
+#questionnaire-form button[type="submit"]:disabled {
   cursor: wait;
   opacity: 0.7;
 }
@@ -1456,7 +1471,7 @@ form .form-check-input:focus {
   border-color: var(--error);
 }
 
-form input[type="submit"] {
+#questionnaire-form button[type="submit"] {
   width: 100%;
   border: 1px solid var(--accent);
   border-radius: 4px;
@@ -1468,7 +1483,7 @@ form input[type="submit"] {
   transition: background-color 0.16s ease, border-color 0.16s ease;
 }
 
-form input[type="submit"]:hover {
+#questionnaire-form button[type="submit"]:hover {
   border-color: var(--accent-light);
   background: var(--accent-light);
   color: var(--accent-hover-contrast);
@@ -2235,13 +2250,13 @@ form input[type="radio"] {
   border-radius: 50%;
 }
 
-form input[type="submit"] {
+#questionnaire-form button[type="submit"] {
   border-radius: 14px;
   box-shadow: var(--submit-shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-form input[type="submit"]:hover {
+#questionnaire-form button[type="submit"]:hover {
   transform: translateY(-2px);
   box-shadow: var(--submit-shadow-hover);
 }
@@ -2344,7 +2359,7 @@ form input[type="submit"]:hover {
     display: flex;
   }
 
-  .form-section .form-submit input[type="submit"] {
+  .form-section .form-submit button[type="submit"] {
     width: 100%;
     min-width: 0;
     min-height: 60px;

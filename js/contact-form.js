@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const endpoint = "https://api.slapform.com/A68hND4Z2";
+  const endpoint = "https://submit-form.com/fzZ7sbPfX";
   const storageKey = "contactFormDraftV1";
   const stateKey = "contactFormOpen";
   const fields = [...form.querySelectorAll("input, textarea")];
@@ -115,7 +115,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  async function getResponseError(response) {
+    const body = await response.text();
+
+    if (!body) {
+      return `Formspark ответил HTTP ${response.status}.`;
+    }
+
+    try {
+      const result = JSON.parse(body);
+      const details = [result.message, result.error]
+        .filter(value => typeof value === "string" && value.trim())
+        .join("; ");
+      const errors = Array.isArray(result.errors)
+        ? result.errors.map(error => typeof error === "string" ? error : error.message || error.detail)
+            .filter(Boolean).join("; ")
+        : result.errors && typeof result.errors === "object"
+          ? Object.values(result.errors).flat().join("; ")
+          : "";
+
+      return `Formspark ответил HTTP ${response.status}${details || errors ? `: ${details || errors}` : "."}`;
+    } catch (error) {
+      return `Formspark ответил HTTP ${response.status}: ${body.slice(0, 300)}`;
+    }
+  }
+
   function getValidationMessage(field) {
+    if ((field.name === "name" || field.name === "message") && !field.value.trim()) {
+      return field.name === "name" ? "Введите ФИО." : "Введите сообщение.";
+    }
+
     if (field.validity.valueMissing) {
       if (field.type === "checkbox") {
         return "Подтвердите согласие на обработку персональных данных.";
@@ -150,7 +179,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return field.validity.valid;
     }
 
-    const message = field.validity.valid ? "" : getValidationMessage(field);
+    const isValid = field.validity.valid
+      && !((field.name === "name" || field.name === "message") && !field.value.trim());
+    const message = isValid ? "" : getValidationMessage(field);
     errorElement.textContent = message;
     errorElement.hidden = message === "";
 
@@ -160,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
       field.removeAttribute("aria-invalid");
     }
 
-    return message === "";
+    return isValid;
   }
 
   function validateRequiredFields() {
@@ -255,29 +286,19 @@ document.addEventListener("DOMContentLoaded", () => {
     setStatus("Отправляем сообщение…");
 
     const data = Object.fromEntries(new FormData(form).entries());
-    data.slap_replyto = data.email;
 
     try {
-      const response = await fetch(endpoint, {
+      const response = await fetch(form.action, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(data)
       });
 
       if (!response.ok) {
-        throw new Error("Submission failed");
-      }
-
-      const contentType = response.headers.get("content-type") || "";
-
-      if (contentType.includes("application/json")) {
-        const result = await response.json();
-        const hasFatalError = Array.isArray(result.errors)
-          && result.errors.some(error => error.level === "fatal");
-
-        if (result.success === false || hasFatalError) {
-          throw new Error("Submission was rejected");
-        }
+        throw new Error(await getResponseError(response));
       }
 
       try {
@@ -289,7 +310,11 @@ document.addEventListener("DOMContentLoaded", () => {
       clearValidationErrors();
       setStatus("Сообщение отправлено. Спасибо!", "success");
     } catch (error) {
-      setStatus("Не удалось отправить сообщение. Проверьте подключение и попробуйте ещё раз.", "error");
+      console.error("Ошибка отправки сообщения в Formspark:", error);
+      const message = error instanceof TypeError
+        ? `Сетевая ошибка при обращении к Formspark (${endpoint}). Проверьте соединение, блокировщики запросов и вкладку Network в инструментах разработчика. Подробности: ${error.message}`
+        : `Не удалось отправить сообщение: ${error.message}`;
+      setStatus(message, "error");
     } finally {
       isSubmitting = false;
       submitButton.disabled = false;

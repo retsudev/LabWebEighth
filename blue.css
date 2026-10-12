@@ -98,7 +98,7 @@ html[data-theme="blue"] #site-nav button,
 html[data-theme="blue"] #contact-dialog button,
 html[data-theme="blue"] .calculator-button,
 html[data-theme="blue"] .calculator-product-toggle,
-html[data-theme="blue"] form input[type="submit"],
+html[data-theme="blue"] #questionnaire-form button[type="submit"],
 html[data-theme="blue"] .theme-toggle-track {
   border-width: 2px;
 }
@@ -130,7 +130,7 @@ html[data-theme="blue"] form .form-control,
 html[data-theme="blue"] form .form-select,
 html[data-theme="blue"] .calculator-plan-select,
 html[data-theme="blue"] .calculator-product-quantity,
-html[data-theme="blue"] form input[type="submit"] {
+html[data-theme="blue"] #questionnaire-form button[type="submit"] {
   border-radius: 20px;
 }
 

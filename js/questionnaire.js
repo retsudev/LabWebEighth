@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector("#questionnaire-form");
-  const submitButton = form?.querySelector('input[type="submit"]');
+  const submitButton = form?.querySelector('button[type="submit"]');
   const status = document.querySelector("#questionnaire-status");
 
   if (!form || !submitButton || !status) {
     return;
   }
 
-  const endpoint = "https://api.slapform.com/gVwUn27OS";
-  const originalButtonText = submitButton.value;
+  const endpoint = "https://submit-form.com/PJ5NLPMPl";
+  const originalButtonText = submitButton.textContent;
   let isSubmitting = false;
 
   function setStatus(message, state) {
@@ -21,6 +21,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  async function getResponseError(response) {
+    const body = await response.text();
+
+    if (!body) {
+      return `Formspark ответил HTTP ${response.status}.`;
+    }
+
+    try {
+      const result = JSON.parse(body);
+      const details = [result.message, result.error]
+        .filter(value => typeof value === "string" && value.trim())
+        .join("; ");
+      const errors = Array.isArray(result.errors)
+        ? result.errors.map(error => typeof error === "string" ? error : error.message || error.detail)
+            .filter(Boolean).join("; ")
+        : result.errors && typeof result.errors === "object"
+          ? Object.values(result.errors).flat().join("; ")
+          : "";
+
+      return `Formspark ответил HTTP ${response.status}${details || errors ? `: ${details || errors}` : "."}`;
+    } catch (error) {
+      return `Formspark ответил HTTP ${response.status}: ${body.slice(0, 300)}`;
+    }
+  }
+
   form.addEventListener("submit", async event => {
     event.preventDefault();
 
@@ -30,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     isSubmitting = true;
     submitButton.disabled = true;
-    submitButton.value = "Отправка…";
+    submitButton.textContent = "Отправка…";
     setStatus("Отправляем анкету…");
 
     const data = Object.fromEntries(new FormData(form).entries());
@@ -45,40 +70,21 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(data)
       });
 
-      const contentType = response.headers.get("content-type") || "";
-      let result = null;
-
-      if (contentType.includes("application/json")) {
-        result = await response.json();
-      }
-
-      const fatalErrors = Array.isArray(result?.errors)
-        ? result.errors.filter(error => error.level === "fatal")
-        : [];
-      const errorDetails = fatalErrors
-        .map(error => error.description || error.message || error.code)
-        .filter(Boolean)
-        .join("; ");
-
       if (!response.ok) {
-        throw new Error(`Slapform ответил HTTP ${response.status}${errorDetails ? `: ${errorDetails}` : ""}.`);
-      }
-
-      if (result?.success === false || fatalErrors.length > 0) {
-        throw new Error(errorDetails || "Slapform отклонил отправку анкеты.");
+        throw new Error(await getResponseError(response));
       }
 
       setStatus("Анкета отправлена. Спасибо!", "success");
     } catch (error) {
-      console.error("Ошибка отправки анкеты в Slapform:", error);
+      console.error("Ошибка отправки анкеты в Formspark:", error);
       const message = error instanceof TypeError
-        ? "Браузер не смог связаться с Slapform (сеть или CORS). Проверьте Console и Network в инструментах разработчика."
+        ? "Браузер не смог связаться с Formspark (сеть или CORS). Проверьте Console и Network в инструментах разработчика."
         : `Не удалось отправить анкету: ${error.message}`;
       setStatus(message, "error");
     } finally {
       isSubmitting = false;
       submitButton.disabled = false;
-      submitButton.value = originalButtonText;
+      submitButton.textContent = originalButtonText;
     }
   });
 });
