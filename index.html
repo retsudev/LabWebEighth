@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Лабораторная работа №7</title>
+  <title>Лабораторная работа №8</title>
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
@@ -15,7 +15,7 @@
 
   <header id="site-header">
     <img src="images/header.jpg" alt="Логотип">
-    <h1>Лабораторная работа №7</h1>
+    <h1>Лабораторная работа №8</h1>
   </header>
 
   <nav id="site-nav" class="d-flex flex-column flex-lg-row justify-content-lg-center">
@@ -23,7 +23,8 @@
     <a class="px-3 py-2 px-lg-4 py-lg-3" href="#table">Таблица</a>
     <a class="px-3 py-2 px-lg-4 py-lg-3" href="#calculator">Калькулятор</a>
     <a class="px-3 py-2 px-lg-4 py-lg-3" href="#gallery">Слайдер</a>
-    <a class="px-3 py-2 px-lg-4 py-lg-3" href="#form">Форма</a>
+    <a class="px-3 py-2 px-lg-4 py-lg-3" href="#form">Анкета</a>
+    <button id="contact-open" class="px-3 py-2 px-lg-4 py-lg-3" type="button">Обратная связь</button>
   </nav>
 
   <main class="container py-3 py-lg-5">
@@ -503,7 +504,7 @@
 
       <div class="col-12 order-5 order-lg-4 form-column">
         <section class="form-section p-3 p-lg-4">
-          <h2 id="form" class="mb-3">Форма</h2>
+          <h2 id="form" class="mb-3">Анкета</h2>
 
           <form action="/" method="POST">
             <div class="form-layout">
@@ -649,10 +650,53 @@
     (с) Бондаренко Андрей Евгеньевич
   </footer>
 
+  <dialog id="contact-dialog" aria-labelledby="contact-title">
+    <div class="contact-dialog-header">
+      <h2 id="contact-title">Форма обратной связи</h2>
+      <button id="contact-close" type="button" aria-label="Закрыть форму">Закрыть</button>
+    </div>
+
+    <form id="contact-form" novalidate>
+      <div class="contact-fields">
+        <div class="contact-field">
+          <label for="contact-name">ФИО <span aria-hidden="true">*</span></label>
+          <input id="contact-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="contact-field">
+          <label for="contact-email">Email <span aria-hidden="true">*</span></label>
+          <input id="contact-email" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="contact-field">
+          <label for="contact-phone">Телефон</label>
+          <input id="contact-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="contact-field">
+          <label for="contact-organization">Организация</label>
+          <input id="contact-organization" name="organization" type="text" autocomplete="organization">
+        </div>
+        <div class="contact-field contact-message-field">
+          <label for="contact-message">Сообщение <span aria-hidden="true">*</span></label>
+          <textarea id="contact-message" name="message" rows="2" required></textarea>
+        </div>
+      </div>
+
+      <label class="contact-consent" for="contact-consent">
+        <input id="contact-consent" name="personal_data_consent" type="checkbox" required>
+        <span>Согласен(на) на обработку персональных данных.</span>
+      </label>
+
+      <p id="contact-status" class="contact-status" role="status" aria-live="polite"></p>
+      <div class="contact-actions">
+        <button id="contact-submit" type="submit">Отправить</button>
+      </div>
+    </form>
+  </dialog>
+
   <script src="js/image-map.js"></script>
   <script src="js/form-validation.js"></script>
   <script src="js/calculator.js"></script>
   <script src="js/gallery.js"></script>
+  <script src="js/contact-form.js"></script>
 
 </body>
 
