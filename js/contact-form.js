@@ -125,6 +125,10 @@ document.addEventListener("DOMContentLoaded", () => {
   openButton.addEventListener("click", openDialog);
   closeButton.addEventListener("click", requestClose);
 
+  dialog.addEventListener("wheel", event => {
+    event.preventDefault();
+  }, { passive: false });
+
   dialog.addEventListener("cancel", event => {
     event.preventDefault();
     requestClose();
