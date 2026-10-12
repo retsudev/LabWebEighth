@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="blue">
 
 <head>
   <meta charset="UTF-8">
@@ -8,14 +8,15 @@
   <title>Лабораторная работа №8</title>
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="style-blue.css">
-  <link id="alternate-theme" rel="stylesheet" href="style-red.css" disabled>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="blue.css">
+  <link rel="stylesheet" href="red.css">
 </head>
 
 <body>
 
   <header id="site-header">
-    <img src="images1/header.jpg" alt="Логотип">
+    <img src="images1/header.jpg" data-blue-src="images1/header.jpg" data-red-src="images2/header_red.jpg" alt="Иллюстрация синей темы" data-blue-alt="Иллюстрация синей темы" data-red-alt="Иллюстрация красной темы">
     <h1>Лабораторная работа №8</h1>
     <div class="theme-picker">
       <span id="theme-name" class="theme-name" aria-live="polite">Синий стиль</span>
@@ -49,25 +50,30 @@
 
           <div class="col-12 order-1 table-column">
             <section class="table-section p-3 p-lg-4">
-              <h2 id="table" class="mb-3">Музыкальная таблица</h2>
+              <h2 id="table" class="mb-3">Таблица любимых жанров</h2>
 
-              <div class="table-scroll" tabindex="0" role="region" aria-label="Справочник жанров электронной музыки. Прокрутка по горизонтали">
+              <div class="table-scroll" tabindex="0" role="region" aria-label="Таблица любимых жанров. Прокрутка по горизонтали">
                 <table>
+                  <colgroup>
+                    <col class="genre-column">
+                    <col class="rhythm-column">
+                    <col>
+                  </colgroup>
                   <thead>
                     <tr>
-                      <th colspan="3">Брейкбит и басовая электроника</th>
+                      <th colspan="3">Жанры электронной музыки</th>
                     </tr>
                     <tr>
-                      <th>Ритмическая основа</th>
                       <th>Жанр</th>
+                      <th>Ритм</th>
                       <th>Особенности звучания</th>
                     </tr>
                   </thead>
 
                   <tbody>
                     <tr>
-                      <td rowspan="3">Брейкбит</td>
                       <td>DnB</td>
+                      <td rowspan="3">Брейкбит</td>
                       <td>Быстрый ломаный ритм, плотный бас, энергичная подача.</td>
                     </tr>
 
@@ -82,15 +88,15 @@
                     </tr>
 
                     <tr>
-                      <td>Свободная шумовая структура</td>
                       <td>Noise</td>
+                      <td>Свободная шумовая структура</td>
                       <td>Шумовые текстуры, индустриальные тембры и отсутствие устойчивого ритмического рисунка.</td>
                     </tr>
 
                     <tr>
-                      <td>Полутемповый ритм</td>
-                      <td>Dubstep</td>
-                      <td>Тяжёлый бас, синкопы и просторные паузы.</td>
+                      <td>UK Garage</td>
+                      <td>Синкопированный 2-step</td>
+                      <td>Пружинистый бас, синкопированный грув и нарезанный вокал.</td>
                     </tr>
                   </tbody>
                 </table>
@@ -288,6 +294,110 @@
                   </details>
                 </article>
 
+                <article class="calculator-product" data-product="youtube-music" data-price-config="youtubeMusic" data-included="false">
+                  <div class="calculator-product-header">
+                    <span class="calculator-product-logo calculator-logo-youtube-music" role="img"
+                      aria-label="Логотип YouTube Music"></span>
+                    <div class="calculator-product-info">
+                      <h3 class="calculator-product-name">YouTube Music Premium</h3>
+                      <p class="calculator-product-price"><span data-price-label></span></p>
+                    </div>
+                  </div>
+                  <div class="calculator-product-bottom">
+                    <div class="calculator-quantity-group">
+                      <label class="calculator-quantity-label" for="quantity-youtube-music">Количество месяцев</label>
+                      <div class="calculator-product-controls">
+                        <button type="button" class="calculator-button calculator-button-minus" data-action="decrease"
+                          aria-label="Уменьшить количество месяцев YouTube Music" disabled>−</button>
+                        <input id="quantity-youtube-music" class="calculator-product-quantity" type="text" inputmode="numeric"
+                          pattern="[0-9]+" value="0" autocomplete="off" aria-label="Количество месяцев YouTube Music Premium">
+                        <button type="button" class="calculator-button calculator-button-plus" data-action="increase"
+                          aria-label="Увеличить количество месяцев YouTube Music">+</button>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="calculator-product-toggle" data-action="toggle-product"
+                    aria-pressed="false" aria-label="Добавить или исключить YouTube Music из расчёта">Добавить в расчёт</button>
+                  <details class="calculator-product-details">
+                    <summary>Подробнее</summary>
+                    <div class="calculator-product-description">
+                      <p>Музыка и клипы без рекламы, фоновое воспроизведение и загрузка треков для прослушивания офлайн</p>
+                    </div>
+                  </details>
+                </article>
+
+                <article class="calculator-product" data-product="yandex-music" data-price-config="yandexMusic" data-included="false">
+                  <div class="calculator-product-header">
+                    <span class="calculator-product-logo calculator-logo-yandex-music" role="img"
+                      aria-label="Логотип Яндекс Музыки"></span>
+                    <div class="calculator-product-info">
+                      <h3 class="calculator-product-name">Яндекс Плюс Мульти</h3>
+                      <p class="calculator-product-price"><span data-price-label></span></p>
+                    </div>
+                  </div>
+                  <div class="calculator-product-bottom">
+                    <div class="calculator-quantity-group">
+                      <label class="calculator-quantity-label" for="quantity-yandex-music">Количество месяцев</label>
+                      <div class="calculator-product-controls">
+                        <button type="button" class="calculator-button calculator-button-minus" data-action="decrease"
+                          aria-label="Уменьшить количество месяцев Яндекс Музыки" disabled>−</button>
+                        <input id="quantity-yandex-music" class="calculator-product-quantity" type="text" inputmode="numeric"
+                          pattern="[0-9]+" value="0" autocomplete="off" aria-label="Количество месяцев Яндекс Плюс Мульти">
+                        <button type="button" class="calculator-button calculator-button-plus" data-action="increase"
+                          aria-label="Увеличить количество месяцев Яндекс Музыки">+</button>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="calculator-product-toggle" data-action="toggle-product"
+                    aria-pressed="false" aria-label="Добавить или исключить Яндекс Музыку из расчёта">Добавить в расчёт</button>
+                  <details class="calculator-product-details">
+                    <summary>Подробнее</summary>
+                    <div class="calculator-product-description">
+                      <p>Музыка под любое настроение, персональные рекомендации и доступ к развлекательным сервисам Яндекса для всей семьи</p>
+                    </div>
+                  </details>
+                </article>
+
+                <article class="calculator-product" data-product="spotify" data-price-config="spotify" data-included="false">
+                  <div class="calculator-product-header">
+                    <span class="calculator-product-logo calculator-logo-spotify" role="img"
+                      aria-label="Логотип Spotify"></span>
+                    <div class="calculator-product-info">
+                      <h3 class="calculator-product-name">Spotify</h3>
+                      <p class="calculator-product-price"><span data-price-label></span></p>
+                    </div>
+                  </div>
+                  <div class="calculator-product-extra">
+                    <label class="calculator-plan-label" for="spotify-plan">Тариф</label>
+                    <select id="spotify-plan" class="form-select calculator-plan-select" name="spotify-plan">
+                      <option value="student" selected>Spotify Premium Student</option>
+                      <option value="duo">Spotify Premium Duo</option>
+                      <option value="family">Spotify Premium Family</option>
+                    </select>
+                  </div>
+                  <div class="calculator-product-bottom">
+                    <div class="calculator-quantity-group">
+                      <label class="calculator-quantity-label" for="quantity-spotify">Количество месяцев</label>
+                      <div class="calculator-product-controls">
+                        <button type="button" class="calculator-button calculator-button-minus" data-action="decrease"
+                          aria-label="Уменьшить количество месяцев Spotify" disabled>−</button>
+                        <input id="quantity-spotify" class="calculator-product-quantity" type="text" inputmode="numeric"
+                          pattern="[0-9]+" value="0" autocomplete="off" aria-label="Количество месяцев Spotify Premium">
+                        <button type="button" class="calculator-button calculator-button-plus" data-action="increase"
+                          aria-label="Увеличить количество месяцев Spotify">+</button>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="calculator-product-toggle" data-action="toggle-product"
+                    aria-pressed="false" aria-label="Добавить или исключить Spotify из расчёта">Добавить в расчёт</button>
+                  <details class="calculator-product-details">
+                    <summary>Подробнее</summary>
+                    <div class="calculator-product-description">
+                      <p>Любимые исполнители, персональные плейлисты и музыка без рекламных пауз. Откройте новых артистов и слушайте музыку в удобном режиме</p>
+                    </div>
+                  </details>
+                </article>
+
               </div>
 
               <div id="calculator-error" class="calculator-error" aria-live="polite"></div>
@@ -313,7 +423,7 @@
 
             <li>
               <a href="https://kubsu.ru/">
-                <img src="images1/star-rotated.jpg" alt="Светящаяся голубая звезда" width="200">
+                <img src="images1/star-rotated.jpg" data-blue-src="images1/star-rotated.jpg" data-red-src="images2/redSpider.jpg" alt="Светящаяся голубая звезда" data-blue-alt="Светящаяся голубая звезда" data-red-alt="Красный паук на тёмном фоне" width="200">
               </a>
             </li>
 
@@ -386,7 +496,7 @@
             </li>
 
             <li>
-              <img src="images1/star-rotated.jpg" alt="Голубая звезда на тёмном фоне" width="400" height="300" class="responsive-map-image" usemap="#map">
+              <img src="images1/star-rotated.jpg" data-blue-src="images1/star-rotated.jpg" data-red-src="images2/redSpider.jpg" alt="Голубая звезда на тёмном фоне" data-blue-alt="Голубая звезда на тёмном фоне" data-red-alt="Красный паук в паутине на чёрном фоне" width="400" height="300" class="responsive-map-image" usemap="#map">
 
               <map name="map">
                 <area shape="poly" coords="0,0,100,0,0,75" href="https://kubsu.ru/" alt="КубГУ">
@@ -460,31 +570,31 @@
 
             <div class="gallery-viewport" role="group" aria-label="Слайды галереи">
               <article class="gallery-slide" data-category="girl" aria-label="Изображение 1 из 9">
-                <img src="images1/girl1.jpg" alt="Аниме-иллюстрация персонажа на фоне голубого неба" draggable="false">
+                <img src="images1/girl1.jpg" data-blue-src="images1/girl1.jpg" data-red-src="images2/girl1.jpg" alt="Аниме-иллюстрация персонажа на фоне голубого неба" data-blue-alt="Аниме-иллюстрация персонажа на фоне голубого неба" data-red-alt="Красная аниме-иллюстрация с интерфейсными надписями" draggable="false">
               </article>
               <article class="gallery-slide" data-category="other" aria-label="Изображение 2 из 9">
-                <img src="images1/bluesky.jpg" alt="Вид на голубое небо между городскими зданиями" draggable="false">
+                <img src="images1/bluesky.jpg" data-blue-src="images1/bluesky.jpg" data-red-src="images2/playlist.jpg" alt="Вид на голубое небо между городскими зданиями" data-blue-alt="Вид на голубое небо между городскими зданиями" data-red-alt="Красно-чёрный постер с текстом и изображением" draggable="false">
               </article>
               <article class="gallery-slide" data-category="girl" aria-label="Изображение 3 из 9">
-                <img src="images1/girl2.jpg" alt="Крупный портрет аниме-персонажа в синей шапке" draggable="false">
+                <img src="images1/girl2.jpg" data-blue-src="images1/girl2.jpg" data-red-src="images2/girl2.jpg" alt="Крупный портрет аниме-персонажа в синей шапке" data-blue-alt="Крупный портрет аниме-персонажа в синей шапке" data-red-alt="Красно-чёрная аниме-иллюстрация персонажа" draggable="false">
               </article>
               <article class="gallery-slide" data-category="other" aria-label="Изображение 4 из 9">
-                <img src="images1/blueabstraction.jpg" alt="Абстрактная синяя иллюстрация с тёмным силуэтом" draggable="false">
+                <img src="images1/blueabstraction.jpg" data-blue-src="images1/blueabstraction.jpg" data-red-src="images2/v1_2.png" alt="Абстрактная синяя иллюстрация с тёмным силуэтом" data-blue-alt="Абстрактная синяя иллюстрация с тёмным силуэтом" data-red-alt="Красно-чёрная иллюстрация с силуэтами и диагональными полосами" draggable="false">
               </article>
               <article class="gallery-slide is-active" data-category="girl" aria-label="Изображение 5 из 9" aria-current="true">
-                <img src="images1/girl3.jpg" alt="Аниме-портрет на фоне ночной улицы" draggable="false">
+                <img src="images1/girl3.jpg" data-blue-src="images1/girl3.jpg" data-red-src="images2/girl3.jpg" alt="Аниме-портрет на фоне ночной улицы" data-blue-alt="Аниме-портрет на фоне ночной улицы" data-red-alt="Красный крупный аниме-портрет" draggable="false">
               </article>
               <article class="gallery-slide" data-category="other" aria-label="Изображение 6 из 9">
-                <img src="images1/eyes.jpg" alt="Синие глаза, изображённые на чёрном фоне" draggable="false">
+                <img src="images1/eyes.jpg" data-blue-src="images1/eyes.jpg" data-red-src="images2/seraphim.jpg" alt="Синие глаза, изображённые на чёрном фоне" data-blue-alt="Синие глаза, изображённые на чёрном фоне" data-red-alt="Красно-чёрная графическая иллюстрация с надписью Seraphim" draggable="false">
               </article>
               <article class="gallery-slide" data-category="girl" aria-label="Изображение 7 из 9">
-                <img src="images1/girl4.jpg" alt="Аниме-персонаж на фоне облачного неба" draggable="false">
+                <img src="images1/girl4.jpg" data-blue-src="images1/girl4.jpg" data-red-src="images2/girl4.jpg" alt="Аниме-персонаж на фоне облачного неба" data-blue-alt="Аниме-персонаж на фоне облачного неба" data-red-alt="Красная аниме-иллюстрация с надписью Neon Genesis Evangelion" draggable="false">
               </article>
               <article class="gallery-slide" data-category="other" aria-label="Изображение 8 из 9">
-                <img src="images1/oldcity.jpg" alt="Синяя иллюстрация ночного города под звёздным небом" draggable="false">
+                <img src="images1/oldcity.jpg" data-blue-src="images1/oldcity.jpg" data-red-src="images2/v1.jpg" alt="Синяя иллюстрация ночного города под звёздным небом" data-blue-alt="Синяя иллюстрация ночного города под звёздным небом" data-red-alt="Красно-чёрный постер с техническими надписями и механическим силуэтом" draggable="false">
               </article>
               <article class="gallery-slide" data-category="other" aria-label="Изображение 9 из 9">
-                <img src="images1/dreaming.jpg" alt="Синяя надпись tell me I'm dreaming на тёмном фоне" draggable="false">
+                <img src="images1/dreaming.jpg" data-blue-src="images1/dreaming.jpg" data-red-src="images2/girl5.jpg" alt="Синяя надпись tell me I'm dreaming на тёмном фоне" data-blue-alt="Синяя надпись tell me I'm dreaming на тёмном фоне" data-red-alt="Красная иллюстрация девушки в стиле комиксного растра" draggable="false">
               </article>
             </div>
 
@@ -545,7 +655,7 @@
                 <div class="form-field">
                   <label class="form-label" for="favorite-artist">Любимый исполнитель или группа</label>
                   <input id="favorite-artist" type="text" class="form-control" name="favorite-artist"
-                    maxlength="100" placeholder="Например, Noisia">
+                    maxlength="100">
                 </div>
 
                 <div class="form-field">

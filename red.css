@@ -1,0 +1,103 @@
+/* Blood Red: the near-black and signal-red palette sampled from images2/v1_2.png. */
+html[data-theme="red"] {
+  color-scheme: dark;
+
+  --bg: #080808;
+  --surface: #111011;
+  --surface-alt: #1b1516;
+  --surface-raised: #2a181a;
+  --text: #fff1ef;
+  --muted: #c3aaaa;
+  --primary: #270b0e;
+  --primary-light: #3a1115;
+  --accent: #c1121f;
+  --accent-light: #ff545a;
+  --accent-dark: #870d16;
+  --accent-rgb: 193, 18, 31;
+  --accent-contrast: #ffffff;
+  --accent-hover-contrast: #080808;
+  --link-color: #ff545a;
+  --link-hover-color: #ff9a9e;
+  --logo-accent: #ff6267;
+  --border: #492326;
+  --success: #ff7779;
+  --error: #ff7779;
+  --warning: #f4c46c;
+  --danger-wash: rgba(255, 30, 37, 0.13);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.48), 0 0 18px rgba(193, 18, 31, 0.08);
+  --shadow-hover: 0 14px 36px rgba(0, 0, 0, 0.58), 0 0 24px rgba(193, 18, 31, 0.16);
+
+  --page-glow: rgba(193, 18, 31, 0.08);
+  --header-background: linear-gradient(112deg, #080808 0%, #12090a 58%, #260b0e 100%);
+  --header-border: #4a171c;
+  --header-rule-color: rgba(255, 42, 48, 0.9);
+  --header-image-border: rgba(255, 67, 72, 0.72);
+  --header-image-shadow: rgba(193, 18, 31, 0.24);
+  --title-shadow: rgba(255, 35, 42, 0.2);
+  --title-rule-shadow: rgba(255, 20, 28, 0.42);
+
+  --toggle-background: rgba(193, 18, 31, 0.12);
+  --toggle-border: rgba(255, 84, 90, 0.5);
+  --toggle-shadow: rgba(193, 18, 31, 0.18);
+  --toggle-thumb-background: linear-gradient(145deg, #fff1ef, #ff7779);
+  --toggle-thumb-shadow: rgba(0, 0, 0, 0.5), 0 0 12px rgba(255, 84, 90, 0.52);
+  --toggle-active-background: rgba(255, 20, 28, 0.2);
+  --toggle-active-border: rgba(255, 99, 104, 0.76);
+  --toggle-active-shadow: rgba(255, 20, 28, 0.34);
+  --toggle-active-thumb-background: linear-gradient(145deg, #ffffff, #ff7779);
+  --toggle-active-thumb-shadow: rgba(0, 0, 0, 0.5), 0 0 12px rgba(255, 50, 56, 0.7);
+
+  --nav-background: rgba(8, 8, 8, 0.97);
+  --nav-link-background: rgba(255, 255, 255, 0.025);
+  --nav-border: rgba(255, 70, 76, 0.38);
+  --nav-active-background: rgba(193, 18, 31, 0.16);
+  --nav-hover-background: rgba(255, 20, 28, 0.24);
+  --backdrop: rgba(0, 0, 0, 0.82);
+
+  --gallery-stage: #100a0b;
+  --gallery-card: #080808;
+  --gallery-glow: rgba(193, 18, 31, 0.1);
+  --gallery-edge: #080808;
+  --gallery-border: #522025;
+  --gallery-glow-strong: rgba(255, 32, 38, 0.58);
+  --gallery-glow-mid: rgba(193, 18, 31, 0.38);
+  --gallery-glow-soft: rgba(130, 10, 18, 0.2);
+  --gallery-glow-clear: rgba(130, 10, 18, 0);
+  --gallery-slide-border: rgba(255, 241, 239, 0.16);
+  --gallery-slide-shadow: 0 24px 58px rgba(0, 0, 0, 0.64);
+  --gallery-arrow-color: #ffd8d5;
+  --gallery-arrow-glow: rgba(255, 38, 44, 0.42);
+  --gallery-arrow-hover: #ffffff;
+  --gallery-arrow-hover-glow: rgba(255, 38, 44, 0.76);
+  --pagination-idle: #765254;
+  --link-decoration: rgba(255, 84, 90, 0.6);
+  --footer-background: linear-gradient(112deg, #100a0b, #080808 55%, #17090b);
+  --submit-shadow: 0 6px 18px rgba(193, 18, 31, 0.25);
+  --submit-shadow-hover: 0 9px 22px rgba(193, 18, 31, 0.38);
+}
+
+html[data-theme="red"] #site-header {
+  background-image: linear-gradient(135deg, transparent 0 72%, rgba(193, 18, 31, 0.14) 72% 100%), var(--header-background);
+}
+
+html[data-theme="red"] main h2::after {
+  width: 54px;
+  height: 4px;
+}
+
+html[data-theme="red"] .links-section,
+html[data-theme="red"] .table-section,
+html[data-theme="red"] .form-section,
+html[data-theme="red"] .calculator-section,
+html[data-theme="red"] .gallery-section {
+  border-top-color: #7b2027;
+}
+
+html[data-theme="red"] #contact-dialog {
+  border-top: 3px solid var(--accent);
+}
+
+html[data-theme="red"] .calculator-button-minus:hover:not(:disabled),
+html[data-theme="red"] .calculator-button-plus:hover:not(:disabled) {
+  color: #080808;
+}
