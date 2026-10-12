@@ -1,4 +1,3 @@
-/* Electric Blue: an ice-sky palette sampled from images1/girl4.jpg. */
 html[data-theme="blue"] {
   color-scheme: light;
 
@@ -77,5 +76,6 @@ html[data-theme="blue"] {
 }
 
 html[data-theme="blue"] #site-header {
+  background-image: linear-gradient(135deg, transparent 0 72%, rgba(91, 181, 222, 0.2) 72% 100%), var(--header-background);
   border-bottom-width: 2px;
 }

@@ -1,4 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const PRICE_CONFIG = {
+    youtubeMusic: 299,
+    yandexMusic: 699,
+    spotify: {
+      student: 199,
+      duo: 349,
+      family: 499
+    }
+  };
+
   const calculator = document.querySelector(".calculator-section");
 
   if (!calculator) {
@@ -18,31 +28,45 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getUnitPrice(product) {
-    const productType = product.dataset.product;
+    const priceConfigKey = product.dataset.priceConfig;
 
-    if (productType === "claude") {
-      const plan = product.querySelector("#claude-plan");
-      const option = plan.selectedOptions[0];
+    if (priceConfigKey) {
+      const configuredPrices = PRICE_CONFIG[priceConfigKey];
+      const plan = product.querySelector(".calculator-plan-select");
+      const basePrice = plan
+        ? configuredPrices?.[plan.value]
+        : configuredPrices;
 
-      return Number(option.dataset.price);
-    }
-
-    if (productType === "gemini") {
-      const ultra = product.querySelector("#gemini-ultra");
-
-      if (ultra.checked) {
-        return Number(ultra.dataset.price);
+      if (!Number.isFinite(basePrice) || basePrice < 0) {
+        return null;
       }
+
+      const multiplierControl = product.querySelector(
+        "[data-price-multiplier]"
+      );
+      const multiplier = multiplierControl?.checked
+        ? Number(multiplierControl.dataset.priceMultiplier)
+        : 1;
+
+      return Number.isFinite(multiplier) && multiplier > 0
+        ? basePrice * multiplier
+        : null;
     }
 
-    return Number(product.dataset.basePrice);
+    const basePrice = Number(product.dataset.basePrice);
+
+    return Number.isFinite(basePrice) && basePrice >= 0
+      ? basePrice
+      : null;
   }
 
   function updatePriceLabel(product) {
     const label = product.querySelector("[data-price-label]");
     const price = getUnitPrice(product);
 
-    label.textContent = `${formatPrice(price)} / месяц`;
+    label.textContent = price === null
+      ? "Цена не указана"
+      : `${formatPrice(price)} / месяц`;
   }
 
   function getQuantityState(product) {
@@ -137,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let total = 0;
     let hasInvalidValue = false;
     let hasEmptyValue = false;
+    const missingPrices = [];
 
     products.forEach(product => {
       const state = getQuantityState(product);
@@ -152,17 +177,27 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (product.dataset.included === "true") {
-        total += getUnitPrice(product) * state.quantity;
+        const unitPrice = getUnitPrice(product);
+
+        if (unitPrice === null) {
+          missingPrices.push(
+            product.querySelector(".calculator-product-name").textContent.trim()
+          );
+        } else {
+          total += unitPrice * state.quantity;
+        }
       }
     });
 
     const hasOverflow = !Number.isSafeInteger(total);
 
-    if (hasInvalidValue || hasOverflow) {
+    if (hasInvalidValue || hasOverflow || missingPrices.length > 0) {
       result.textContent = "— ₽";
 
       if (hasOverflow) {
         error.textContent = "Слишком большая итоговая сумма.";
+      } else if (missingPrices.length > 0) {
+        error.textContent = `Не задана цена для подписки: ${missingPrices.join(", ")}.`;
       } else if (!hasEmptyValue) {
         error.textContent =
           "Количество должно быть целым неотрицательным числом.";
@@ -208,8 +243,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const toggleButton = product.querySelector(
       '[data-action="toggle-product"]'
     );
-    const plan = product.querySelector("#claude-plan");
-    const ultra = product.querySelector("#gemini-ultra");
+    const plan = product.querySelector(".calculator-plan-select");
+    const multiplierControl = product.querySelector(
+      "[data-price-multiplier]"
+    );
 
     plusButton.addEventListener("click", () => {
       const state = getQuantityState(product);
@@ -252,9 +289,10 @@ document.addEventListener("DOMContentLoaded", () => {
       plan.addEventListener("change", updateCalculator);
     }
 
-    if (ultra) {
-      ultra.addEventListener("change", updateCalculator);
+    if (multiplierControl) {
+      multiplierControl.addEventListener("change", updateCalculator);
     }
+
   });
 
   updateCalculator();

@@ -1,4 +1,3 @@
-/* Shared component geometry and responsive behavior. Theme files supply color tokens. */
 * {
   box-sizing: border-box;
 }
@@ -1047,21 +1046,6 @@ form .form-check-input:focus {
   mask-size: contain;
 }
 
-.calculator-logo-chatgpt {
-  -webkit-mask-image: url("icons/chatgpt.svg");
-  mask-image: url("icons/chatgpt.svg");
-}
-
-.calculator-logo-claude {
-  -webkit-mask-image: url("icons/claude.svg");
-  mask-image: url("icons/claude.svg");
-}
-
-.calculator-logo-gemini {
-  -webkit-mask-image: url("icons/gemini.svg");
-  mask-image: url("icons/gemini.svg");
-}
-
 .calculator-logo-youtube-music {
   -webkit-mask-image: url("icons/yt-music.svg");
   mask-image: url("icons/yt-music.svg");
@@ -1137,11 +1121,6 @@ form .form-check-input:focus {
   box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.24);
 }
 
-.calculator-gemini-extra {
-  order: 2;
-  min-height: 70px;
-}
-
 .calculator-feature {
   display: flex;
   align-items: flex-start;
@@ -1189,6 +1168,11 @@ form .form-check-input:focus {
   color: var(--muted);
   font-size: 12px;
   line-height: 1.45;
+}
+
+.calculator-option-extra {
+  order: 2;
+  min-height: 70px;
 }
 
 .calculator-product-bottom {
@@ -1664,7 +1648,7 @@ form input[type="submit"]:hover {
   }
 
   .calculator-section .calculator-product-extra,
-  .calculator-section .calculator-gemini-extra {
+  .calculator-section .calculator-option-extra {
     grid-row: 3;
     align-self: center;
     min-height: 0;
@@ -1756,8 +1740,7 @@ form input[type="submit"]:hover {
     padding: 14px;
   }
 
-  .calculator-section .calculator-product[data-product="claude"],
-  .calculator-section .calculator-product[data-product="gemini"],
+  .calculator-section .calculator-product[data-product="yandex-music"],
   .calculator-section .calculator-product[data-product="spotify"] {
     grid-template-areas:
       "header toggle"
@@ -1849,8 +1832,13 @@ form input[type="submit"]:hover {
     font-size: 17px;
   }
 
-  .calculator-section .calculator-product-extra,
-  .calculator-section .calculator-gemini-extra {
+  .calculator-section .calculator-product-extra {
+    grid-area: extra;
+    width: 100%;
+    min-height: 0;
+  }
+
+  .calculator-section .calculator-option-extra {
     grid-area: extra;
     width: 100%;
     min-height: 0;
@@ -2194,7 +2182,6 @@ form input[type="submit"]:hover {
   }
 }
 
-/* Rounded surfaces for the refreshed midnight-blue theme */
 .links-section img,
 .table-scroll,
 table {

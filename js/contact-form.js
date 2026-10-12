@@ -77,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       localStorage.setItem(storageKey, JSON.stringify(draft));
     } catch (error) {
-      // The form remains usable when browser storage is unavailable.
     }
   }
 
@@ -103,7 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     } catch (error) {
-      // Ignore malformed or unavailable browser storage.
     }
   }
 
@@ -285,7 +283,6 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         localStorage.removeItem(storageKey);
       } catch (error) {
-        // Clearing storage is best effort; the successful submission still stands.
       }
 
       form.reset();

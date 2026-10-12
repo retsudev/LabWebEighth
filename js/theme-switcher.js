@@ -1,9 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   const toggle = document.querySelector("#theme-toggle");
   const label = document.querySelector("#theme-name");
-  const alternateTheme = document.querySelector("#alternate-theme");
 
-  if (!toggle || !label || !alternateTheme) {
+  if (!toggle || !label) {
     return;
   }
 
@@ -17,7 +16,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function applyTheme() {
-    alternateTheme.disabled = !isRed;
+    const theme = isRed ? "red" : "blue";
+    document.documentElement.dataset.theme = theme;
+
+    document.querySelectorAll("[data-blue-src][data-red-src]").forEach(image => {
+      const source = image.dataset[`${theme}Src`];
+
+      if (image.getAttribute("src") !== source) {
+        image.setAttribute("src", source);
+      }
+
+      const alt = image.dataset[`${theme}Alt`];
+
+      if (alt) {
+        image.alt = alt;
+      }
+    });
+
     toggle.setAttribute("aria-checked", String(isRed));
     label.textContent = isRed ? "Красный стиль" : "Синий стиль";
   }
@@ -31,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       window.localStorage.setItem(storageKey, isRed ? "red" : "blue");
     } catch (error) {
-      // Theme switching still works for the current page if storage is unavailable.
     }
   });
 });
