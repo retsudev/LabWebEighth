@@ -2423,6 +2423,13 @@ form input[type="radio"] {
     order: 11;
   }
 
+  #questionnaire-status {
+    order: 12;
+    width: 100%;
+    margin-top: -12px;
+    text-align: center;
+  }
+
   .form-profile-column .biography-field textarea {
     min-height: 150px;
   }
