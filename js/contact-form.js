@@ -220,7 +220,11 @@ document.addEventListener("DOMContentLoaded", () => {
   closeButton.addEventListener("click", requestClose);
 
   dialog.addEventListener("wheel", event => {
-    event.preventDefault();
+    const hasScrollableContent = dialog.scrollHeight > dialog.clientHeight;
+
+    if (!hasScrollableContent) {
+      event.preventDefault();
+    }
   }, { passive: false });
 
   dialog.addEventListener("cancel", event => {
