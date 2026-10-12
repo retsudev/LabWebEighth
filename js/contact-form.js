@@ -14,7 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const storageKey = "contactFormDraftV1";
   const stateKey = "contactFormOpen";
   const fields = [...form.querySelectorAll("input, textarea")];
+  const requiredFields = fields.filter(field => field.required);
   let isSubmitting = false;
+  let validationAttempted = false;
 
   function showDialog() {
     if (!dialog.open) {
@@ -115,11 +117,103 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function getValidationMessage(field) {
+    if (field.validity.valueMissing) {
+      if (field.type === "checkbox") {
+        return "Подтвердите согласие на обработку персональных данных.";
+      }
+
+      if (field.name === "name") {
+        return "Введите ФИО.";
+      }
+
+      if (field.name === "email") {
+        return "Введите email.";
+      }
+
+      if (field.name === "message") {
+        return "Введите сообщение.";
+      }
+    }
+
+    if (field.type === "email" && field.validity.typeMismatch) {
+      return "Проверьте формат email.";
+    }
+
+    return "Проверьте значение этого поля.";
+  }
+
+  function updateFieldValidation(field) {
+    const errorElement = document.getElementById(
+      field.getAttribute("aria-describedby")
+    );
+
+    if (!errorElement) {
+      return field.validity.valid;
+    }
+
+    const message = field.validity.valid ? "" : getValidationMessage(field);
+    errorElement.textContent = message;
+    errorElement.hidden = message === "";
+
+    if (message) {
+      field.setAttribute("aria-invalid", "true");
+    } else {
+      field.removeAttribute("aria-invalid");
+    }
+
+    return message === "";
+  }
+
+  function validateRequiredFields() {
+    validationAttempted = true;
+    let firstInvalidField = null;
+
+    requiredFields.forEach(field => {
+      const isValid = updateFieldValidation(field);
+
+      if (!isValid && !firstInvalidField) {
+        firstInvalidField = field;
+      }
+    });
+
+    if (firstInvalidField) {
+      firstInvalidField.focus();
+      return false;
+    }
+
+    return true;
+  }
+
+  function clearValidationErrors() {
+    validationAttempted = false;
+    requiredFields.forEach(field => {
+      const errorElement = document.getElementById(
+        field.getAttribute("aria-describedby")
+      );
+
+      field.removeAttribute("aria-invalid");
+
+      if (errorElement) {
+        errorElement.textContent = "";
+        errorElement.hidden = true;
+      }
+    });
+  }
+
   restoreDraft();
 
   fields.forEach(field => {
-    field.addEventListener("input", saveDraft);
-    field.addEventListener("change", saveDraft);
+    const handleFieldChange = () => {
+      saveDraft();
+
+      if (validationAttempted && field.required) {
+        updateFieldValidation(field);
+      }
+    };
+
+    field.addEventListener("input", handleFieldChange);
+    field.addEventListener("change", handleFieldChange);
   });
 
   openButton.addEventListener("click", openDialog);
@@ -149,8 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (!form.checkValidity()) {
-      form.reportValidity();
+    if (!validateRequiredFields()) {
       return;
     }
 
@@ -192,6 +285,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       form.reset();
+      clearValidationErrors();
       setStatus("Сообщение отправлено. Спасибо!", "success");
     } catch (error) {
       setStatus("Не удалось отправить сообщение. Проверьте подключение и попробуйте ещё раз.", "error");

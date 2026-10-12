@@ -660,11 +660,13 @@
       <div class="contact-fields">
         <div class="contact-field">
           <label for="contact-name">ФИО <span aria-hidden="true">*</span></label>
-          <input id="contact-name" name="name" type="text" autocomplete="name" required>
+          <input id="contact-name" name="name" type="text" autocomplete="name" aria-describedby="contact-name-error" required>
+          <span id="contact-name-error" class="contact-error" hidden></span>
         </div>
         <div class="contact-field">
           <label for="contact-email">Email <span aria-hidden="true">*</span></label>
-          <input id="contact-email" name="email" type="email" autocomplete="email" required>
+          <input id="contact-email" name="email" type="email" autocomplete="email" aria-describedby="contact-email-error" required>
+          <span id="contact-email-error" class="contact-error" hidden></span>
         </div>
         <div class="contact-field">
           <label for="contact-phone">Телефон</label>
@@ -676,16 +678,20 @@
         </div>
         <div class="contact-field contact-message-field">
           <label for="contact-message">Сообщение <span aria-hidden="true">*</span></label>
-          <textarea id="contact-message" name="message" rows="2" required></textarea>
+          <textarea id="contact-message" name="message" rows="2" aria-describedby="contact-message-error" required></textarea>
+          <span id="contact-message-error" class="contact-error" hidden></span>
         </div>
       </div>
 
       <p id="contact-status" class="contact-status" role="status" aria-live="polite"></p>
       <div class="contact-actions">
-        <label class="contact-consent" for="contact-consent">
-          <input id="contact-consent" name="personal_data_consent" type="checkbox" required>
-          <span>Согласен(на) на обработку персональных данных.</span>
-        </label>
+        <div class="contact-consent-group">
+          <label class="contact-consent" for="contact-consent">
+            <input id="contact-consent" name="personal_data_consent" type="checkbox" aria-describedby="contact-consent-error" required>
+            <span>Согласен(на) на обработку персональных данных.</span>
+          </label>
+          <span id="contact-consent-error" class="contact-error" hidden></span>
+        </div>
         <button id="contact-submit" type="submit">Отправить</button>
       </div>
     </form>
