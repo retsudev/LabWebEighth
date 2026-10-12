@@ -1453,19 +1453,21 @@ form input[type="submit"]:hover {
   .calculator-section .calculator-product {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto 96px minmax(150px, 1fr) auto auto;
+    grid-template-rows: 180px auto auto auto auto;
     gap: 14px;
-    min-height: 640px;
+    min-height: 0;
     align-items: stretch;
   }
 
   .calculator-section .calculator-product-header {
     grid-row: 1;
+    height: 180px;
+    min-height: 180px;
   }
 
   .calculator-section .calculator-product-extra,
   .calculator-section .calculator-gemini-extra {
-    grid-row: 2;
+    grid-row: 3;
     align-self: center;
     min-height: 0;
   }
@@ -1477,7 +1479,9 @@ form input[type="submit"]:hover {
   .calculator-section .calculator-product-details {
     display: flex;
     flex-direction: column;
-    grid-row: 3;
+    grid-row: 2;
+    align-self: start;
+    justify-content: flex-start;
     min-height: 0;
     margin: 0;
     padding: 0;
@@ -1491,7 +1495,7 @@ form input[type="submit"]:hover {
   }
 
   .calculator-section .calculator-product-description {
-    margin-top: auto;
+    margin-top: 0;
     margin-bottom: 0;
     padding: 0;
     border: 0;
@@ -1955,7 +1959,10 @@ form input[type="submit"]:hover {
 
 @media screen and (max-width: 575.98px) {
   .calculator-section .calculator-product-name {
-    font-size: 32px;
+    max-width: 100%;
+    font-size: clamp(14px, 5vw, 22px);
+    white-space: nowrap;
+    overflow-wrap: normal;
   }
 }
 
