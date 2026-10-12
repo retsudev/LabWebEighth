@@ -1,0 +1,53 @@
+:root {
+  --accent: #f02d4f;
+  --accent-light: #ff9aa8;
+  --accent-dark: #b81432;
+  --logo-accent: #ff9aa8;
+  --success: #ff9aa8;
+  --border: #49202a;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.36), 0 0 22px rgba(240, 45, 79, 0.08);
+  --shadow-hover: 0 14px 36px rgba(0, 0, 0, 0.46), 0 0 26px rgba(240, 45, 79, 0.2);
+}
+
+body {
+  background: radial-gradient(ellipse at 50% -25%, rgba(240, 45, 79, 0.16), transparent 58%), var(--bg);
+}
+
+#site-header {
+  background: linear-gradient(112deg, #170b13 0%, #24101a 58%, #32121e 100%);
+  border-bottom-color: #5a2634;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.34), 0 0 30px rgba(240, 45, 79, 0.12);
+}
+
+#site-header::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 72, 99, 0.88), transparent);
+}
+
+#site-header img {
+  border-color: rgba(255, 154, 168, 0.7);
+  box-shadow: 0 0 26px rgba(240, 45, 79, 0.3);
+}
+
+#site-header h1 {
+  text-shadow: 0 2px 18px rgba(255, 72, 99, 0.26);
+}
+
+#site-header h1::after {
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  box-shadow: 0 0 14px rgba(240, 45, 79, 0.58);
+}
+
+.gallery-stage {
+  --gallery-stage: #21101a;
+  --gallery-card: #10080d;
+  background: radial-gradient(ellipse at center, rgba(240, 45, 79, 0.12) 0%, var(--gallery-stage) 60%, #170b13 100%);
+  border-color: #542331;
+}
+
+.gallery-stage::before {
+  background: radial-gradient(ellipse,
+      rgba(255, 97, 121, 0.76) 0%,
+      rgba(240, 45, 79, 0.52) 24%,
+      rgba(184, 20, 50, 0.28) 48%,
+      rgba(184, 20, 50, 0) 72%);
+}

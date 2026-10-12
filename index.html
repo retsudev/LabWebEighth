@@ -8,19 +8,29 @@
   <title>Лабораторная работа №8</title>
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-blue.css">
+  <link id="alternate-theme" rel="stylesheet" href="style-red.css" disabled>
 </head>
 
 <body>
 
   <header id="site-header">
-    <img src="images/header.jpg" alt="Логотип">
+    <img src="images1/header.jpg" alt="Логотип">
     <h1>Лабораторная работа №8</h1>
+    <div class="theme-picker">
+      <span id="theme-name" class="theme-name" aria-live="polite">Синий стиль</span>
+      <button id="theme-toggle" class="theme-toggle" type="button" role="switch" aria-checked="false"
+        aria-labelledby="theme-name">
+        <span class="theme-toggle-track" aria-hidden="true">
+          <span class="theme-toggle-thumb"></span>
+        </span>
+      </button>
+    </div>
   </header>
 
   <nav id="site-nav" class="d-flex flex-column flex-lg-row justify-content-lg-center">
     <a class="px-3 py-2 px-lg-4 py-lg-3" href="#links">Гиперссылки</a>
-    <a class="px-3 py-2 px-lg-4 py-lg-3" href="#table">Таблица</a>
+    <a class="px-3 py-2 px-lg-4 py-lg-3" href="#table">Музыкальная таблица</a>
     <a class="px-3 py-2 px-lg-4 py-lg-3" href="#calculator">Калькулятор</a>
     <a class="px-3 py-2 px-lg-4 py-lg-3" href="#gallery">Слайдер</a>
     <a class="px-3 py-2 px-lg-4 py-lg-3" href="#form">Анкета</a>
@@ -39,7 +49,7 @@
 
           <div class="col-12 order-1 table-column">
             <section class="table-section p-3 p-lg-4">
-              <h2 id="table" class="mb-3">Таблица</h2>
+              <h2 id="table" class="mb-3">Музыкальная таблица</h2>
 
               <div class="table-scroll" tabindex="0" role="region" aria-label="Справочник жанров электронной музыки. Прокрутка по горизонтали">
                 <table>
@@ -303,7 +313,7 @@
 
             <li>
               <a href="https://kubsu.ru/">
-                <img src="images/star-rotated.jpg" alt="Светящаяся голубая звезда" width="200">
+                <img src="images1/star-rotated.jpg" alt="Светящаяся голубая звезда" width="200">
               </a>
             </li>
 
@@ -376,7 +386,7 @@
             </li>
 
             <li>
-              <img src="images/star-rotated.jpg" alt="Голубая звезда на тёмном фоне" width="400" height="300" class="responsive-map-image" usemap="#map">
+              <img src="images1/star-rotated.jpg" alt="Голубая звезда на тёмном фоне" width="400" height="300" class="responsive-map-image" usemap="#map">
 
               <map name="map">
                 <area shape="poly" coords="0,0,100,0,0,75" href="https://kubsu.ru/" alt="КубГУ">
@@ -450,31 +460,31 @@
 
             <div class="gallery-viewport" role="group" aria-label="Слайды галереи">
               <article class="gallery-slide" data-category="girl" aria-label="Изображение 1 из 9">
-                <img src="images/girl1.jpg" alt="Аниме-портрет девушки с голубыми волосами" draggable="false">
+                <img src="images1/girl1.jpg" alt="Аниме-иллюстрация персонажа на фоне голубого неба" draggable="false">
               </article>
               <article class="gallery-slide" data-category="other" aria-label="Изображение 2 из 9">
-                <img src="images/bluesky.jpg" alt="Голубое небо с облаками" draggable="false">
+                <img src="images1/bluesky.jpg" alt="Вид на голубое небо между городскими зданиями" draggable="false">
               </article>
               <article class="gallery-slide" data-category="girl" aria-label="Изображение 3 из 9">
-                <img src="images/girl2.jpg" alt="Футуристичный андроид в профиль" draggable="false">
+                <img src="images1/girl2.jpg" alt="Крупный портрет аниме-персонажа в синей шапке" draggable="false">
               </article>
               <article class="gallery-slide" data-category="other" aria-label="Изображение 4 из 9">
-                <img src="images/blueabstraction.jpg" alt="Синяя абстрактная текстура" draggable="false">
+                <img src="images1/blueabstraction.jpg" alt="Абстрактная синяя иллюстрация с тёмным силуэтом" draggable="false">
               </article>
               <article class="gallery-slide is-active" data-category="girl" aria-label="Изображение 5 из 9" aria-current="true">
-                <img src="images/girl3.jpg" alt="Аниме-портрет на фоне ночной улицы" draggable="false">
+                <img src="images1/girl3.jpg" alt="Аниме-портрет на фоне ночной улицы" draggable="false">
               </article>
               <article class="gallery-slide" data-category="other" aria-label="Изображение 6 из 9">
-                <img src="images/vagabond.jpg" alt="Монохромная иллюстрация самурая" draggable="false">
+                <img src="images1/eyes.jpg" alt="Синие глаза, изображённые на чёрном фоне" draggable="false">
               </article>
               <article class="gallery-slide" data-category="girl" aria-label="Изображение 7 из 9">
-                <img src="images/girl4.jpg" alt="Аниме-портрет девушки на фоне облачного неба" draggable="false">
+                <img src="images1/girl4.jpg" alt="Аниме-персонаж на фоне облачного неба" draggable="false">
               </article>
               <article class="gallery-slide" data-category="other" aria-label="Изображение 8 из 9">
-                <img src="images/oldcity.jpg" alt="Старый город в сумерках" draggable="false">
+                <img src="images1/oldcity.jpg" alt="Синяя иллюстрация ночного города под звёздным небом" draggable="false">
               </article>
               <article class="gallery-slide" data-category="other" aria-label="Изображение 9 из 9">
-                <img src="images/bluejellyfish.jpg" alt="Светящиеся голубые медузы в тёмной воде" draggable="false">
+                <img src="images1/dreaming.jpg" alt="Синяя надпись tell me I'm dreaming на тёмном фоне" draggable="false">
               </article>
             </div>
 
@@ -656,6 +666,7 @@
   <script src="js/gallery.js"></script>
   <script src="js/contact-form.js"></script>
   <script src="js/questionnaire.js"></script>
+  <script src="js/theme-switcher.js"></script>
 
 </body>
 
