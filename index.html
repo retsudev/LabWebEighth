@@ -7,6 +7,10 @@
 
   <title>Лабораторная работа №8</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Onest:wght@400;500;600&family=Oswald:wght@600;700&family=Rubik:wght@600;700&family=Russo+One&display=swap&subset=cyrillic" rel="stylesheet">
+
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="blue.css">
@@ -92,9 +96,9 @@
                     </tr>
 
                     <tr>
-                      <td>UK Garage</td>
-                      <td>Синкопированный 2-step</td>
-                      <td>Пружинистый бас, синкопированный грув и нарезанный вокал.</td>
+                      <td>Digital Hardcore</td>
+                      <td>Ускоренный брейкбит</td>
+                      <td>Агрессивные брейкбиты, перегруженные синтезаторы, панковская энергия и резкие вокальные фрагменты.</td>
                     </tr>
                   </tbody>
                 </table>
@@ -117,9 +121,9 @@
                 <article class="calculator-product" data-product="youtube-music" data-price-config="youtubeMusic" data-included="false">
                   <div class="calculator-product-header">
                     <span class="calculator-product-logo calculator-logo-youtube-music" role="img"
-                      aria-label="Логотип YouTube Music"></span>
+                      aria-label="Логотип YTMusic"></span>
                     <div class="calculator-product-info">
-                      <h3 class="calculator-product-name">YouTube Music Premium</h3>
+                      <h3 class="calculator-product-name">YTMusic</h3>
                       <p class="calculator-product-price"><span data-price-label></span></p>
                     </div>
                   </div>
@@ -128,21 +132,21 @@
                       <label class="calculator-quantity-label" for="quantity-youtube-music">Количество месяцев</label>
                       <div class="calculator-product-controls">
                         <button type="button" class="calculator-button calculator-button-minus" data-action="decrease"
-                          aria-label="Уменьшить количество месяцев YouTube Music" disabled>−</button>
+                          aria-label="Уменьшить количество месяцев YTMusic" disabled>−</button>
                         <input id="quantity-youtube-music" class="calculator-product-quantity" type="text" inputmode="numeric"
-                          pattern="[0-9]+" value="0" autocomplete="off" aria-label="Количество месяцев YouTube Music Premium">
+                          pattern="[0-9]+" value="0" autocomplete="off" aria-label="Количество месяцев YTMusic">
                         <button type="button" class="calculator-button calculator-button-plus" data-action="increase"
-                          aria-label="Увеличить количество месяцев YouTube Music">+</button>
+                          aria-label="Увеличить количество месяцев YTMusic">+</button>
                       </div>
                     </div>
                   </div>
                   <button type="button" class="calculator-product-toggle" data-action="toggle-product"
-                    aria-pressed="false" aria-label="Добавить или исключить YouTube Music из расчёта">Добавить в расчёт</button>
+                    aria-pressed="false" aria-label="Добавить или исключить YTMusic из расчёта">Добавить в расчёт</button>
                   <details class="calculator-product-details">
                     <summary>Подробнее</summary>
                     <div class="calculator-product-description">
                       <p>Музыка и клипы без рекламы, фоновое воспроизведение и загрузка треков для прослушивания офлайн</p>
-                      <p><strong>Количество месяцев</strong> задаёт длительность подписки. <strong>Добавление в расчёт</strong> включает YouTube Music Premium в итоговую стоимость.</p>
+                      <p><strong>Количество месяцев</strong> задаёт длительность подписки. <strong>Добавление в расчёт</strong> включает YTMusic в итоговую стоимость.</p>
                     </div>
                   </details>
                 </article>
@@ -193,7 +197,7 @@
                     <span class="calculator-product-logo calculator-logo-yandex-music" role="img"
                       aria-label="Логотип Яндекс Музыки"></span>
                     <div class="calculator-product-info">
-                      <h3 class="calculator-product-name">Яндекс Музыка</h3>
+                      <h3 class="calculator-product-name">Я.Музыка</h3>
                       <p class="calculator-product-price"><span data-price-label></span></p>
                     </div>
                   </div>
@@ -201,7 +205,7 @@
                     <label class="calculator-feature" for="yandex-multi">
                       <input id="yandex-multi" class="form-check-input" type="checkbox" name="yandex-multi" data-price-multiplier="3">
                       <span class="calculator-feature-copy">
-                        <span class="calculator-feature-title">Яндекс Плюс Мульти</span>
+                        <span class="calculator-feature-title">Я.Музыка</span>
                         <small>Расширенный уровень цифрового комфорта для пользователей с повышенными требованиями. Стоимость базового тарифа увеличивается втрое.</small>
                       </span>
                     </label>
@@ -211,21 +215,21 @@
                       <label class="calculator-quantity-label" for="quantity-yandex-music">Количество месяцев</label>
                       <div class="calculator-product-controls">
                         <button type="button" class="calculator-button calculator-button-minus" data-action="decrease"
-                          aria-label="Уменьшить количество месяцев Яндекс Музыки" disabled>−</button>
+                          aria-label="Уменьшить количество месяцев Я.Музыка" disabled>−</button>
                         <input id="quantity-yandex-music" class="calculator-product-quantity" type="text" inputmode="numeric"
-                          pattern="[0-9]+" value="0" autocomplete="off" aria-label="Количество месяцев Яндекс Музыки">
+                          pattern="[0-9]+" value="0" autocomplete="off" aria-label="Количество месяцев Я.Музыка">
                         <button type="button" class="calculator-button calculator-button-plus" data-action="increase"
-                          aria-label="Увеличить количество месяцев Яндекс Музыки">+</button>
+                          aria-label="Увеличить количество месяцев Я.Музыка">+</button>
                       </div>
                     </div>
                   </div>
                   <button type="button" class="calculator-product-toggle" data-action="toggle-product"
-                    aria-pressed="false" aria-label="Добавить или исключить Яндекс Музыку из расчёта">Добавить в расчёт</button>
+                    aria-pressed="false" aria-label="Добавить или исключить Я.Музыка из расчёта">Добавить в расчёт</button>
                   <details class="calculator-product-details">
                     <summary>Подробнее</summary>
                     <div class="calculator-product-description">
                       <p>Музыка под любое настроение, персональные рекомендации и доступ к развлекательным сервисам Яндекса для всей семьи</p>
-                      <p><strong>Яндекс Плюс Мульти</strong> — опция с повышенным уровнем доступа к экосистеме. При её выборе цена базовой подписки умножается на 3. <strong>Количество месяцев</strong> задаёт срок подписки.</p>
+                      <p><strong>Я.Музыка</strong> — опция с повышенным уровнем доступа к экосистеме. При её выборе цена базовой подписки умножается на 3. <strong>Количество месяцев</strong> задаёт срок подписки.</p>
                     </div>
                   </details>
                 </article>

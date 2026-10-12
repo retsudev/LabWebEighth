@@ -1,6 +1,10 @@
 html[data-theme="blue"] {
   color-scheme: light;
 
+  --font-heading: "Rubik", sans-serif;
+  --font-body: "Manrope", sans-serif;
+  --gallery-corner: #6dbce0;
+
   --bg: #eaf5fa;
   --surface: #f8fcfe;
   --surface-alt: #dcecf4;
@@ -78,4 +82,87 @@ html[data-theme="blue"] {
 html[data-theme="blue"] #site-header {
   background-image: linear-gradient(135deg, transparent 0 72%, rgba(91, 181, 222, 0.2) 72% 100%), var(--header-background);
   border-bottom-width: 2px;
+  box-shadow: 0 5px 16px rgba(16, 43, 64, 0.12);
+}
+
+html[data-theme="blue"] :is(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-heading);
+}
+
+html[data-theme="blue"] .gallery-stage::after {
+  display: none;
+}
+
+html[data-theme="blue"] #site-nav a,
+html[data-theme="blue"] #site-nav button,
+html[data-theme="blue"] #contact-dialog button,
+html[data-theme="blue"] .calculator-button,
+html[data-theme="blue"] .calculator-product-toggle,
+html[data-theme="blue"] form input[type="submit"],
+html[data-theme="blue"] .theme-toggle-track {
+  border-width: 2px;
+}
+
+html[data-theme="blue"] table,
+html[data-theme="blue"] th,
+html[data-theme="blue"] td {
+  border-width: 2px;
+}
+
+html[data-theme="blue"] #site-header img,
+html[data-theme="blue"] .links-section,
+html[data-theme="blue"] .table-section,
+html[data-theme="blue"] .form-section,
+html[data-theme="blue"] .calculator-section,
+html[data-theme="blue"] .gallery-section,
+html[data-theme="blue"] #contact-dialog,
+html[data-theme="blue"] #site-nav a,
+html[data-theme="blue"] #site-nav button,
+html[data-theme="blue"] .gallery-stage,
+html[data-theme="blue"] .gallery-slide,
+html[data-theme="blue"] table,
+html[data-theme="blue"] .table-scroll,
+html[data-theme="blue"] .calculator-product,
+html[data-theme="blue"] .calculator-button,
+html[data-theme="blue"] .calculator-product-toggle,
+html[data-theme="blue"] .calculator-product-details,
+html[data-theme="blue"] form .form-control,
+html[data-theme="blue"] form .form-select,
+html[data-theme="blue"] .calculator-plan-select,
+html[data-theme="blue"] .calculator-product-quantity,
+html[data-theme="blue"] form input[type="submit"] {
+  border-radius: 20px;
+}
+
+html[data-theme="blue"] .links-section img {
+  border-radius: 20px;
+}
+
+html[data-theme="blue"] .links-section,
+html[data-theme="blue"] .table-section,
+html[data-theme="blue"] .form-section,
+html[data-theme="blue"] .calculator-section,
+html[data-theme="blue"] .gallery-section,
+html[data-theme="blue"] #site-header img {
+  border-radius: 26px;
+}
+
+html[data-theme="blue"] .gallery-stage {
+  border-radius: 28px;
+}
+
+html[data-theme="blue"] .gallery-slide,
+html[data-theme="blue"] .calculator-product {
+  border-radius: 24px;
+}
+
+html[data-theme="blue"] form input[type="checkbox"],
+html[data-theme="blue"] .calculator-feature .form-check-input {
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 767.98px) {
+  html[data-theme="blue"] .gallery-stage {
+    border-radius: 24px;
+  }
 }
